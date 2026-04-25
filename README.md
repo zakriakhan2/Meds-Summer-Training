@@ -2,3 +2,4 @@
 Currently persuing my degree in computer engineering at GIKI  (4th semester)
 
 Part of Meds RISCV summer training program.  
+Interested in AI acceleratos and hardware accelerators in general.
