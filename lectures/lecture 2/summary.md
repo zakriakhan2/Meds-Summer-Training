@@ -25,11 +25,3 @@
 
 ---
 
-### Summary Table: NAND vs. AND in CMOS
-
-| Feature | NAND Gate | AND Gate |
-| :--- | :--- | :--- |
-| **Transistor Count** | 4 | 6 |
-| **Stages** | Single-stage | Two-stage (NAND + NOT) |
-| **Signal Strength** | Strong 0 and 1 | Strong 0 and 1 |
-| **Efficiency** | Higher (Area/Speed) | Lower |
