@@ -16,7 +16,3 @@ This repo covers the design and simulation of key digital components, focusing o
 * **Tools:** ModelSim, Vivado, or similar HDL simulators
 * **Focus:** Gate-level optimization and timing verification
 """
-
-file_path_v2 = "Digital_Logic_Summary_v2.md"
-with open(file_path_v2, "w") as f:
-    f.write(md_content_v2)
