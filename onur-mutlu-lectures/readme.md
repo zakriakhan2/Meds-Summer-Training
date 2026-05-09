@@ -1,108 +1,118 @@
-# Computer Architecture & Digital Logic Design - Complete Course Notes
+# Computer Architecture - Lecture Notes
 
-This repository contains comprehensive lecture notes and design documentation covering CMOS basics, computer architecture, performance metrics, and FPGA implementation strategies.
+## Lecture 1: Introduction
+This lecture covers CMOS basics.[cite: 1]
 
----
-
-## 1. CMOS Fundamentals & Logic Gates
-
-### CMOS Basics
-* **NMOS Transistor:** Strong at passing '0' (Ground), weak at passing '1' (VDD)[cite: 1].
-* **PMOS Transistor:** Strong at passing '1' (VDD), weak at passing '0' (Ground)[cite: 1].
-* **The Inversion Necessity:** Due to these inherent transistor strengths, CMOS gates are naturally inverting, such as NAND and NOR gates[cite: 1].
-
-### The "AND" Gate Problem
-Realizing an **AND** gate in CMOS is more complex than a **NAND** gate:
-* **NAND Gate:** Requires only 4 transistors[cite: 1].
-* **AND Gate:** Requires a NAND gate followed by an inverter, totaling 6 transistors[cite: 1].
-* **Impact:** This results in increased silicon area and higher propagation latency compared to naturally inverting gates[cite: 1].
+### Topics Covered
+* NMOS and PMOS[cite: 1]
+* CMOS inverter[cite: 1]
 
 ---
 
-## 2. Performance Metrics & Scaling
+## Lecture 2: CMOS Constraints, Scaling, and Programmable Logic
 
-### Industry Trends
-* **Moore’s Law:** The observation that transistor density doubles approximately every two years, which drives the evolution of computing power[cite: 1].
-* **Power Consumption:** Defined by the relationship between switching frequency, voltage, and heat dissipation[cite: 1].
-* **Delay Metrics:**
-    * **Propagation Delay ($t_{pd}$):** The maximum time from an input change until the output reaches its final value[cite: 1].
-    * **Contamination Delay ($t_{cd}$):** The minimum time an output remains stable after an input change[cite: 1].
+### Topics Covered
 
-### Path Analysis & Timing
-* **Critical Path:** The longest path in a design that limits the maximum operating frequency[cite: 1].
-* **Glitches:** Temporary unwanted transitions caused by mismatched path delays in combinational logic[cite: 1].
-* **Clock Skew:** Spatial variation in clock arrival times across different registers[cite: 1].
+#### 1. CMOS Behavior & The "AND" Gate Problem
+* **Transistor Strengths:**
+    * **NMOS:** Strong at passing '0' (Ground), weak at passing '1'.[cite: 1]
+    * **PMOS:** Strong at passing '1' (Power), weak at passing '0'.[cite: 1]
+* **The Inversion Necessity:** Because of these strengths, CMOS gates are naturally inverting.[cite: 1]
+* **AND Gate Realization:** Unlike the **NAND** gate (4 transistors), an **AND** gate requires an extra inverter stage (6 transistors total), leading to increased area and latency.[cite: 1]
 
----
+#### 2. Performance Metrics & Industry Trends
+* **Moore’s Law:** The observation that transistor density doubles approximately every two years, driving the evolution of computing power.[cite: 1]
+* **Power Consumption:** The relationship between switching frequency, voltage, and heat dissipation.[cite: 1]
+* **Latency:** Understanding **Propagation Delay**—the time required for a signal to travel through gates and settle at the output.[cite: 1]
 
-## 3. Combinational Logic Foundations
+#### 3. Combinational Logic Foundations
+* **Boolean Algebra:** Application of identities (De Morgan's, Distributive, etc.) to minimize logic expressions.[cite: 1]
+* **Combinational Circuits:** Design of memoryless systems where the output depends solely on current inputs.[cite: 1]
 
-### Boolean Algebra & Optimization
-* Application of identities like De Morgan's and Distributive laws to minimize logic expressions and reduce hardware[cite: 1].
-* **Combinational Circuits:** Memoryless systems where the output depends solely on current inputs[cite: 1].
-
-### Key Components
-* **Comparators:** Logic for magnitude comparison such as $A > B$, $A < B$, and $A = B$[cite: 1].
-* **ALU (Arithmetic Logic Unit):** Core component for arithmetic and logic operations[cite: 1].
-* **Tri-State Buffers:** Manages high-impedance states for bus sharing to prevent signal contention[cite: 1].
-
-### Programmable Logic Arrays (PLA)
-* **Structure:** Implementation of logic using a programmable **AND-plane** followed by a programmable **OR-plane**[cite: 1].
-* **Case Study:** Mapping truth tables for **Sum** and **Carry-out** in a Full Adder into a PLA architecture[cite: 1].
+#### 4. Programmable Logic Arrays (PLA)
+* **Structure:** Implementation of logic using a programmable **AND-plane** followed by a programmable **OR-plane**.[cite: 1]
+* **Full Adder Case Study:** Mapping the truth tables for **Sum** and **Carry-out** into a PLA architecture.[cite: 1]
 
 ---
 
-## 4. Sequential & Memory Systems
+## Repository Overview
+This repo covers the design and simulation of key digital components, focusing on hardware efficiency and memory architecture.[cite: 1]
 
-### Memory Architecture
-* **SRAM Cell:** Analysis of the **6T (6-transistor)** cell structure and its data stability[cite: 1].
-* **Memory Arrays:** Built using row decoders, word-lines, and bit-lines for scalable storage[cite: 1].
-* **Sense Amps:** Circuits that speed up data reads by detecting small voltage swings[cite: 1].
+### Combinational Logic
+* **Comparators:** Logic for magnitude comparison ($A > B$, $A < B$, $A = B$).[cite: 1]
+* **ALU:** Core arithmetic and logic operations.[cite: 1]
+* **Tri-State Buffers:** Managing high-impedance states for bus sharing and preventing signal contention.[cite: 1]
 
-### Finite State Machines (FSM)
-* **Moore vs. Mealy:**
-    * **Moore:** Outputs depend only on the current state[cite: 1].
-    * **Mealy:** Outputs depend on both the current state and the current inputs[cite: 1].
-* **Encoding Schemes:**
-    * **Binary Encoding:** Minimizes the number of flip-flops used[cite: 1].
-    * **One-Hot Encoding:** Optimizes for speed and reduces combinational logic depth at the cost of more registers[cite: 1].
-    * **Output Encoding:** Maps state bits directly to outputs for glitch-free performance[cite: 1].
+### Sequential & Memory Systems
+* **SRAM Cell:** Analysis of the 6T (6-transistor) cell structure and data stability.[cite: 1]
+* **Memory Arrays:** Building scalable storage using row decoders, word-lines, and bit-lines.[cite: 1]
+* **Sense Amps:** Speeding up data reads by detecting small voltage swings.[cite: 1]
 
----
-
-## 5. FPGA Architecture & Implementation
-
-### Internal Hardware
-* **Configurable Logic Blocks (CLBs):** Understanding logic implementation based on Look-Up Tables (LUTs)[cite: 1].
-* **Interconnects:** Programmable switch matrices used to route signals[cite: 1].
-* **Programming Flow:** The process of converting HDL code into a bitstream for physical hardware mapping[cite: 1].
-
-### Design Objectives
-* Optimizing for **timing closure** and preventing race conditions[cite: 1].
-* Calculating maximum clock frequency based on path constraints[cite: 1].
-* Synthesis and implementation on FPGA fabric[cite: 1].
-
----
-
-## 6. Hardware Description Language (HDL) - Verilog/VHDL
-
-### Hierarchical Design
-* **Modular Structure:** Organizing code into **Top**, **Sub**, and **Leaf** modules for better scalability[cite: 1].
-* **Module Instantiation:** Connecting components using named or positional port mapping[cite: 1].
-
-### Modeling Styles
-* **Dataflow:** Using `assign` statements for combinational logic[cite: 1].
-* **Behavioral:** Implementing logic via `always` blocks for procedural assignments[cite: 1].
-* **Structural:** Explicitly calling gate primitives to define hardware topology[cite: 1].
-
-### Syntax & Implementation
-* **Combinational Logic:** Uses blocking assignments (`=`) and sensitivity lists using `*`[cite: 1].
-* **Sequential Logic:** Uses non-blocking assignments (`<=`) triggered by clock edges like `posedge` or `negedge`[cite: 1].
-* **Verilog Fundamentals:** Syntax for wires, registers, bit-vectors, and parameters[cite: 1].
-
----
-
-## Tech Stack
+### Tech Stack
 * **Languages:** Verilog / VHDL[cite: 1]
 * **Tools:** ModelSim, Vivado, or similar HDL simulators[cite: 1]
 * **Focus:** Gate-level optimization and timing verification[cite: 1]
+
+---
+
+## Advanced Projects
+Projects focused on Finite State Machine (FSM) optimization and the internal architecture of FPGA hardware.[cite: 1]
+
+### Finite State Machines (FSM)
+* **Moore vs. Mealy:** Implementing both architectures comparing Moore (outputs based on state) and Mealy (outputs based on state and inputs).[cite: 1]
+* **Encoding Schemes:**
+    * **Binary Encoding:** Minimizing the number of flip-flops.[cite: 1]
+    * **One-Hot Encoding:** Optimizing for speed and reducing combinational logic depth at the cost of more registers.[cite: 1]
+    * **Output Encoding:** Mapping state bits directly to outputs for glitch-free performance.[cite: 1]
+
+### FPGA Architecture
+* **Configurable Logic Blocks (CLBs):** Understanding LUT-based logic implementation.[cite: 1]
+* **Interconnects:** How programmable switch matrices route signals.[cite: 1]
+* **Programming:** The bitstream flow from HDL code to hardware physical mapping.[cite: 1]
+
+### Technical Focus
+* FSM state reduction and timing closure.[cite: 1]
+* Synthesis and implementation on FPGA fabric.[cite: 1]
+
+---
+
+## Timing & Analysis
+
+### Delay Metrics
+* **Propagation Delay ($t_{pd}$):** The maximum time from input change to the output reaching its final value.[cite: 1]
+* **Contamination Delay ($t_{cd}$):** The minimum time an output remains stable after an input change.[cite: 1]
+
+### Path Analysis
+* **Critical Path:** The longest path in the design that limits the maximum operating frequency.[cite: 1]
+* **Sequencing Overhead:** The combined time penalties from setup/hold times and propagation delays of flip-flops.[cite: 1]
+* **Glitches:** Identification of temporary unwanted transitions caused by mismatched path delays in combinational logic.[cite: 1]
+
+### Clock & Synchronization
+* **Clock Skew:** Analysis of spatial variation in clock arrival times across different registers.[cite: 1]
+* **Delay Modeling:** Understanding how gate and wire delays impact overall system performance.[cite: 1]
+
+### Key Objectives
+* Optimizing for timing closure and preventing race conditions.[cite: 1]
+* Calculating maximum clock frequency based on path constraints.[cite: 1]
+
+---
+
+## Verilog Implementation
+
+### Hierarchical Design
+* **Modular Structure:** Organizing code into **Top**, **Sub**, and **Leaf** modules for scalability and readability.[cite: 1]
+* **Module Instantiation:** Connecting components using named and positional port mapping.[cite: 1]
+
+### Modeling Styles
+* **Dataflow:** Using `assign` statements for combinational logic.[cite: 1]
+* **Behavioral:** Implementing logic via `always` blocks (procedural assignments).[cite: 1]
+* **Structural:** Explicitly calling gate primitives to define hardware topology.[cite: 1]
+
+### Syntax & Implementation
+* **Combinational vs. Sequential:**
+    * **Comb:** Blocking assignments (`=`) and sensitivity lists using `*`.[cite: 1]
+    * **Seq:** Non-blocking assignments (`<=`) triggered by clock edges (`posedge`/`negedge`).[cite: 1]
+* **Verilog Fundamentals:** Syntax for wires, registers, bit-vectors, and parameters.[cite: 1]
+
+### Focus
+* Code modularity and hardware abstraction levels.[cite: 1]
